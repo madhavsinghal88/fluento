@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+  
+  --color-primary: #007AFF;
+  --color-secondary: #5856D6;
+  --color-accent: #FFCC00;
+  --color-card: #FFFFFF;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-game {
+    @apply px-8 py-4 rounded-[32px] font-bold text-lg shadow-xl shadow-indigo-100 hover:-translate-y-1 active:scale-95 transition-all text-white bg-[var(--color-primary)];
+  }
+}
+
+@layer utilities {
+  .text-pop {
+    text-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+}
