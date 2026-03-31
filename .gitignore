@@ -1,0 +1,9 @@
+# Git ignore configuration
+.env
+.env.local
+node_modules/
+target/
+*.class
+*.jar
+.vscode/
+.DS_Store
