@@ -105,6 +105,11 @@ export default function QuizGame({ mode }: QuizGameProps) {
       setScore(score + 1);
     }
     
+    // Auto-scroll to show the 'Next Quest' button
+    setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }, 100);
+    
     // Update Performance & Sync with backend
     if (child && child.id) {
         const newXp = (child.totalXp || 0) + (isCorrect ? 10 : 0);

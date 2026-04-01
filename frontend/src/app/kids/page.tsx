@@ -11,7 +11,7 @@ export default function KidsPage() {
   const [activeGame, setActiveGame] = useState<"quiz-india" | "quiz-world" | "word" | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#FDFEFE] flex flex-col items-center py-20 px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#FDFEFE] flex flex-col items-center py-8 md:py-20 px-4 relative overflow-x-hidden">
       
       {/* Background patterns */}
       <div className="absolute top-40 right-20 text-yellow-400 rotate-12 opacity-10 animate-bounce"><Star size={120} fill="currentColor" /></div>
