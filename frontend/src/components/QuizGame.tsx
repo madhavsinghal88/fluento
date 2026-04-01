@@ -250,7 +250,7 @@ export default function QuizGame({ mode }: QuizGameProps) {
                           <button
                             key={l}
                             disabled={isLocked}
-                            onClick={() => setLevel(l)}
+                            onClick={() => { setQuestions([]); setLevel(l); }}
                             className={`group p-8 border-4 rounded-[40px] shadow-2xl transition-all text-center space-y-4 relative ${
                                 isLocked 
                                 ? "bg-slate-50 border-slate-100 opacity-50 grayscale" 
