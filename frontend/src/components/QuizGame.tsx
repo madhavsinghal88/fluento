@@ -51,10 +51,10 @@ export default function QuizGame({ mode }: QuizGameProps) {
   }, [mode]);
 
   useEffect(() => {
-    if (level !== null && child) {
+    if (level !== null && child && questions.length === 0) {
       loadQuiz();
     }
-  }, [level]);
+  }, [level, child, questions.length]);
 
   const loadQuiz = async () => {
     if (!level || !child) return;
@@ -138,8 +138,9 @@ export default function QuizGame({ mode }: QuizGameProps) {
   };
 
   const nextQuestion = () => {
-    // Check if we are still on the same question where showResult is true
-    // Because this can be called via setTimeout OR clicking the button manually
+    // If showResult is already false, we've already manually skipped ahead.
+    if (!showResult && !isGameOver) return;
+    
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(prev => prev + 1);
       setSelectedOption(null);
