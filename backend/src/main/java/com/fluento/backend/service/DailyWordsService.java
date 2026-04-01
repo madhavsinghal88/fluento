@@ -115,12 +115,15 @@ public class DailyWordsService {
     }
 
     private List<WordDTO> getFallbackWords(int count) {
-        return List.of(
-            WordDTO.builder().word("Happy").meaning("Feeling good").example("The sun makes me happy!").build(),
-            WordDTO.builder().word("Learn").meaning("Get new knowledge").example("I love to learn English!").build(),
-            WordDTO.builder().word("Smart").meaning("Good at thinking").example("You are very smart!").build(),
-            WordDTO.builder().word("Wonder").meaning("Something beautiful and amazing").example("The stars are full of wonder.").build(),
-            WordDTO.builder().word("Bright").meaning("Giving off a lot of light").example("The moon is very bright tonight.").build()
-        ).subList(0, Math.min(5, count));
+        log.info("Using FallbackWordLibrary for {} words", count);
+        List<WordDTO> all = FallbackWordLibrary.ALL_WORDS;
+        List<WordDTO> result = new ArrayList<>();
+        
+        // Pick random words from the library
+        java.util.Collections.shuffle(all);
+        for (int i = 0; i < Math.min(all.size(), count); i++) {
+            result.add(all.get(i));
+        }
+        return result;
     }
 }
