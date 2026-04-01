@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class DailyWordsService {
 
-    private String apiKey = "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";
+    @Value("${openai.api.key}")
+    private String apiKey;
 
     @Value("${openai.api.model:google/gemini-2.0-flash-001}")
     private String model;
