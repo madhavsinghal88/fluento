@@ -1,5 +1,7 @@
 # 🚀 Fluento - AI-Powered Gamified Learning
 
+### 🌐 Live Production: [https://fluento-fvys.vercel.app/kids](https://fluento-fvys.vercel.app/kids)
+
 Fluento is a modern, high-performance learning platform for kids that combines **AI-driven vocabulary building**, **live synchronized classrooms**, and a **secure gamification system**.
 
 ---
