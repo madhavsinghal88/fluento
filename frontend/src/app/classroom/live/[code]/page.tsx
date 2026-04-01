@@ -29,7 +29,8 @@ export default function LiveRoomPage() {
   useEffect(() => {
     playerName.current = localStorage.getItem("fluento_player_name");
 
-    const socket = new SockJS("http://localhost:8080/ws-classroom");
+    const wsUrl = process.env.NEXT_PUBLIC_WS_URL || "http://localhost:8080/ws-classroom";
+    const socket = new SockJS(wsUrl);
     const client = new Client({
       webSocketFactory: () => socket,
       onConnect: () => {
