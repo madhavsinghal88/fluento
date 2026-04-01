@@ -54,7 +54,7 @@ export default function QuizGame({ mode }: QuizGameProps) {
     if (level !== null && child) {
       loadQuiz();
     }
-  }, [level, child]);
+  }, [level]);
 
   const loadQuiz = async () => {
     if (!level || !child) return;
