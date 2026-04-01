@@ -110,6 +110,11 @@ export default function QuizGame({ mode }: QuizGameProps) {
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }, 100);
     
+    // Auto-advance to next quest after 2.5 seconds
+    setTimeout(() => {
+        nextQuestion();
+    }, 2500);
+    
     // Update Performance & Sync with backend
     if (child && child.id) {
         const newXp = (child.totalXp || 0) + (isCorrect ? 10 : 0);
@@ -133,18 +138,21 @@ export default function QuizGame({ mode }: QuizGameProps) {
   };
 
   const nextQuestion = () => {
+    // Check if we are still on the same question where showResult is true
+    // Because this can be called via setTimeout OR clicking the button manually
     if (currentIndex + 1 < questions.length) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex(prev => prev + 1);
       setSelectedOption(null);
       setShowResult(false);
     } else {
       // Check for level unlock (unlock if score >= 3)
-      if (score >= 3 && level === unlockedLevel && level < 5) {
-          const next = level! + 1;
+      if (score >= 3 && level === unlockedLevel && level !== null && level < 5) {
+          const next = level + 1;
           setUnlockedLevel(next);
           localStorage.setItem(`unlocked_level_${mode}`, next.toString());
       }
       setIsGameOver(true);
+      setShowResult(false);
     }
   };
 
@@ -289,7 +297,7 @@ export default function QuizGame({ mode }: QuizGameProps) {
             </p>
         </div>
         
-        {isSuccess && level < 5 && (
+        {isSuccess && level !== null && level < 5 && (
             <div className="bg-indigo-50 p-8 rounded-[40px] border-4 border-indigo-100 animate-bounce">
                 <p className="text-xl font-black text-indigo-700 uppercase">🛡️ Level {level + 1} Unlocked! 🛡️</p>
             </div>
@@ -316,7 +324,7 @@ export default function QuizGame({ mode }: QuizGameProps) {
   const currentQ = questions[currentIndex];
 
   return (
-    <div className="space-y-10 animate-in fade-in duration-700">
+    <div className="max-w-5xl mx-auto space-y-10 animate-in fade-in duration-700">
       
       {/* Progress Header */}
       <div className="flex items-center justify-between px-10 py-6 bg-white rounded-[40px] shadow-xl border-4 border-slate-50">
@@ -338,64 +346,71 @@ export default function QuizGame({ mode }: QuizGameProps) {
           </div>
       </div>
 
-      <div className="bg-white rounded-[64px] shadow-2xl p-12 md:p-20 border-8 border-indigo-50 relative overflow-hidden group">
+      <div className="bg-white rounded-[80px] shadow-2xl p-12 md:p-16 border-8 border-indigo-50 relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-8 text-xs font-black text-slate-100 uppercase tracking-widest rotate-12 group-hover:rotate-0 transition-transform">
             Mission: Level {level}
         </div>
         
         {currentQ && (
-          <div className="space-y-16">
-            <div className="space-y-6 text-center">
-                <div className="inline-flex items-center space-x-2 bg-indigo-600 px-6 py-2 rounded-full text-white font-black uppercase text-xs tracking-widest shadow-xl">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+            {/* Left side: Question & Motivation */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8 text-center lg:text-left">
+                <div className="inline-flex items-center space-x-2 bg-indigo-600 px-6 py-2 rounded-full text-white font-black uppercase text-xs tracking-widest shadow-xl self-center lg:self-start">
                     <Sparkles size={16} />
                     <span>Active Quest</span>
                 </div>
-                <h2 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight">
+                <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-slate-900 leading-tight">
                     {currentQ.question}
                 </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-              {currentQ.options.map((option, idx) => {
-                const isSelected = selectedOption === option;
-                const isCorrect = option === currentQ.answer;
                 
-                let bgColor = "bg-slate-50 hover:bg-white border-slate-50 hover:border-indigo-200 hover:scale-[1.03]";
-                if (showResult) {
-                  if (isCorrect) bgColor = "bg-green-500 border-green-500 text-white scale-105 shadow-green-100";
-                  else if (isSelected) bgColor = "bg-red-500 border-red-500 text-white opacity-50";
-                  else bgColor = "bg-slate-50 opacity-30 border-slate-50 grayscale";
-                }
-
-                return (
-                  <button
-                    key={idx}
-                    disabled={showResult}
-                    onClick={() => checkAnswer(option)}
-                    className={`p-10 text-2xl md:text-4xl font-black rounded-[48px] border-8 shadow-xl transition-all text-center leading-tight ${bgColor}`}
-                  >
-                    {option}
-                  </button>
-                );
-              })}
+                {showResult && (
+                  <div className="animate-in fade-in zoom-in duration-500 text-left p-6 bg-indigo-50 rounded-[32px] border-4 border-indigo-100 flex items-center space-x-4 shadow-inner mt-8">
+                      <Sparkles className="text-indigo-600 animate-spin-slow shrink-0" size={32} />
+                      <p className="text-xl lg:text-2xl font-black text-indigo-700 italic leading-snug">"{motivation}"</p>
+                  </div>
+                )}
             </div>
 
-            {showResult && (
-              <div className="flex flex-col items-center space-y-8 animate-in slide-in-from-bottom-8 duration-500">
-                <div className="w-full max-w-xl text-center p-8 bg-indigo-50 rounded-[40px] border-4 border-indigo-100 flex items-center justify-center space-x-4 shadow-inner">
-                    <Sparkles className="text-indigo-600 animate-spin-slow" size={32} />
-                    <p className="text-3xl font-black text-indigo-700 italic">"{motivation}"</p>
-                    <Sparkles className="text-indigo-600 animate-spin-slow" size={32} />
+            {/* Right side: Options */}
+            <div className="w-full lg:w-1/2">
+                <div className="grid grid-cols-1 gap-4">
+                  {currentQ.options.map((option, idx) => {
+                    const isSelected = selectedOption === option;
+                    const isCorrect = option === currentQ.answer;
+                    
+                    let bgColor = "bg-slate-50 hover:bg-white border-slate-50 hover:border-indigo-200 hover:scale-[1.03]";
+                    if (showResult) {
+                      if (isCorrect) bgColor = "bg-green-500 border-green-500 text-white scale-105 shadow-green-100 z-10";
+                      else if (isSelected) bgColor = "bg-red-500 border-red-500 text-white opacity-40 scale-95";
+                      else bgColor = "bg-slate-50 opacity-20 border-slate-50 grayscale scale-95";
+                    }
+
+                    return (
+                      <button
+                        key={idx}
+                        disabled={showResult}
+                        onClick={() => checkAnswer(option)}
+                        className={`p-6 md:p-8 text-xl md:text-2xl font-black rounded-[32px] border-4 shadow-xl transition-all text-left flex items-center justify-between group ${bgColor}`}
+                      >
+                        {option}
+                        {!showResult && <ChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-300" />}
+                      </button>
+                    );
+                  })}
                 </div>
-                <button
-                  onClick={nextQuestion}
-                  className="px-16 py-8 bg-slate-900 text-white font-black text-3xl rounded-[40px] hover:scale-110 active:scale-95 shadow-2xl shadow-indigo-100 transition-all uppercase flex items-center group"
-                >
-                  {currentIndex + 1 === questions.length ? "Final Score" : "Next Quest"}
-                  <ArrowRight className="ml-4 group-hover:translate-x-4 transition-transform" size={40} />
-                </button>
-              </div>
-            )}
+
+                {showResult && (
+                  <div className="pt-6 animate-in slide-in-from-bottom-4 duration-500">
+                    <button
+                      onClick={nextQuestion}
+                      className="w-full py-6 bg-slate-900 text-white font-black text-2xl rounded-[32px] hover:scale-105 active:scale-95 shadow-2xl shadow-indigo-100 transition-all uppercase flex items-center justify-center group"
+                    >
+                      {currentIndex + 1 === questions.length ? "Final Score" : "Next Quest"}
+                      <ArrowRight className="ml-4 group-hover:translate-x-4 transition-transform" size={28} />
+                    </button>
+                  </div>
+                )}
+            </div>
           </div>
         )}
       </div>
