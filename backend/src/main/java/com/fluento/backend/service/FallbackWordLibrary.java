@@ -175,19 +175,186 @@ public class FallbackWordLibrary {
         addBatch("Frozen", "Gently", "Hollow", "Impact", "Juicy", "Kindle", "Liquid", "Modern", "Noble", "Orbital");
         addBatch("Pardon", "Quartz", "Rescue", "Silent", "Tunnel", "Uphill", "Valley", "Wander", "Yield", "Zigzag");
 
-        // Expanded Batching to reach 500+
-        for (int i = 0; i < 40; i++) {
-            ALL_WORDS.add(create("Word_" + (i+150), "A vocabulary word for stage " + i, "Example sentence " + i));
-            ALL_WORDS.add(create("Term_" + (i+150), "Another vocabulary word for stage " + i, "Another example sentence " + i));
-            ALL_WORDS.add(create("Item_" + (i+150), "Description for child stage " + i, "Use in a sentence " + i));
-            ALL_WORDS.add(create("Object_" + (i+150), "Definition for kids " + i, "Sentence for kids " + i));
-            ALL_WORDS.add(create("Concept_" + (i+150), "Simple concept " + i, "Concept in use " + i));
-            ALL_WORDS.add(create("Value_" + (i+150), "Simple value " + i, "Value in use " + i));
-            ALL_WORDS.add(create("Quality_" + (i+150), "Simple quality " + i, "Quality in use " + i));
-            ALL_WORDS.add(create("Feature_" + (i+150), "Simple feature " + i, "Feature in use " + i));
-            ALL_WORDS.add(create("Element_" + (i+150), "Simple element " + i, "Element in use " + i));
-            ALL_WORDS.add(create("Factor_" + (i+150), "Simple factor " + i, "Factor in use " + i));
-        }
+        // Nature & Environment (Extended)
+        ALL_WORDS.add(create("Acorn", "A small nut from an oak tree.", "Squirrels love to find an acorn."));
+        ALL_WORDS.add(create("Blossom", "A flower on a tree or plant.", "The cherry blossom is pink."));
+        ALL_WORDS.add(create("Canyon", "A deep valley with very steep sides.", "The Grand Canyon is huge!"));
+        ALL_WORDS.add(create("Desert", "A dry place with lots of sand.", "Camels live in the hot desert."));
+        ALL_WORDS.add(create("Forest", "A large area covered with trees.", "We went for a walk in the forest."));
+        ALL_WORDS.add(create("Garden", "A piece of ground where plants grow.", "Mom grows roses in our garden."));
+        ALL_WORDS.add(create("Harvest", "Picking crops from the field.", "Fall is the time for apple harvest."));
+        ALL_WORDS.add(create("Iceberg", "A large piece of ice floating in the sea.", "The iceberg is very cold."));
+        ALL_WORDS.add(create("Icicle", "Hanging ice formed by dripping water.", "An icicle hung from the roof."));
+        ALL_WORDS.add(create("Lagoon", "A shallow lake near the ocean.", "The blue lagoon was very calm."));
+        ALL_WORDS.add(create("Mountain", "A very high part of the Earth.", "The mountain peak has snow."));
+        ALL_WORDS.add(create("Puddle", "A small pool of water on the ground.", "I jumped in a big rain puddle!"));
+        ALL_WORDS.add(create("Rainbow", "Colorful arcs in the sky after rain.", "Look at the beautiful rainbow!"));
+        ALL_WORDS.add(create("River", "A large stream of flowing water.", "The river flows to the sea."));
+        ALL_WORDS.add(create("Sky", "The space above the Earth.", "The sky is blue and clear."));
+        ALL_WORDS.add(create("Stream", "A small, narrow river.", "Little fish swim in the stream."));
+        ALL_WORDS.add(create("Thunder", "The loud noise after lightning.", "The thunder made a loud boom!"));
+        ALL_WORDS.add(create("Valley", "Low land between hills.", "The green valley is very pretty."));
+        ALL_WORDS.add(create("Volcano", "A mountain that can erupt with fire.", "The volcano is far away."));
+        ALL_WORDS.add(create("Wildfire", "A fire that spreads in nature.", "Be careful with fire in the woods."));
+
+        // Animals (Extended)
+        ALL_WORDS.add(create("Alligator", "A large reptile with sharp teeth.", "The alligator is in the water."));
+        ALL_WORDS.add(create("Butterfly", "An insect with beautiful wings.", "The butterfly sat on a flower."));
+        ALL_WORDS.add(create("Cheetah", "The fastest land animal.", "The cheetah runs very fast."));
+        ALL_WORDS.add(create("Duckling", "A baby duck.", "The duckling followed its mother."));
+        ALL_WORDS.add(create("Elephant", "A very big animal with a trunk.", "The elephant has big ears."));
+        ALL_WORDS.add(create("Flamingo", "A tall pink bird with long legs.", "The flamingo stands on one leg."));
+        ALL_WORDS.add(create("Giraffe", "An animal with a very long neck.", "The giraffe eats leaves from trees."));
+        ALL_WORDS.add(create("Hamster", "A small pet with chubby cheeks.", "The hamster runs on its wheel."));
+        ALL_WORDS.add(create("Insects", "Tiny animals with six legs.", "Ants and bees are insects."));
+        ALL_WORDS.add(create("Jaguar", "A large spotted cat from the jungle.", "The jaguar is a strong hunter."));
+        ALL_WORDS.add(create("Koala", "A furry animal that eats eucalyptus.", "The koala sleeps in the tree."));
+        ALL_WORDS.add(create("Lizard", "A small reptile with a tail.", "The lizard is sunning on a rock."));
+        ALL_WORDS.add(create("Monkey", "A clever animal that climbs trees.", "The monkey is very playful."));
+        ALL_WORDS.add(create("Narwhal", "A whale with a long tusks.", "The narwhal lives in the Arctic."));
+        ALL_WORDS.add(create("Ostrich", "A very large bird that cannot fly.", "The ostrich can run very fast."));
+        ALL_WORDS.add(create("Parrot", "A colorful bird that can talk.", "The parrot said 'Hello!'."));
+        ALL_WORDS.add(create("Quail", "A small, brown bird.", "The quail hid in the grass."));
+        ALL_WORDS.add(create("Raccoon", "An animal with a mask on its face.", "The raccoon came out at night."));
+        ALL_WORDS.add(create("Seahorse", "A tiny fish that looks like a horse.", "The seahorse swims upright."));
+        ALL_WORDS.add(create("Toucan", "A bird with a very big beak.", "The toucan is very colorful."));
+        ALL_WORDS.add(create("Unicorn", "A magical horse with a horn.", "The unicorn is in the storybook."));
+        ALL_WORDS.add(create("Vulture", "A large bird of prey.", "The vulture circles in the sky."));
+        ALL_WORDS.add(create("Walrus", "A sea animal with long tusks.", "The walrus is very big and heavy."));
+        ALL_WORDS.add(create("Zebra", "A striped animal from Africa.", "The zebra has black and white stripes."));
+
+        // Objects & Tools (Extended)
+        ALL_WORDS.add(create("Airplane", "A vehicle that flies in the sky.", "The airplane is very fast."));
+        ALL_WORDS.add(create("Bicycle", "A vehicle with two wheels.", "I like to ride my bicycle."));
+        ALL_WORDS.add(create("Camera", "Used for taking photos.", "Say cheese for the camera!"));
+        ALL_WORDS.add(create("Drum", "A musical instrument you hit.", "He plays the drum in the band."));
+        ALL_WORDS.add(create("Engine", "The part that makes a car move.", "The engine is very loud."));
+        ALL_WORDS.add(create("Flashlight", "A small light you carry.", "Use a flashlight in the dark."));
+        ALL_WORDS.add(create("Guitar", "A musical instrument with strings.", "She can play the guitar well."));
+        ALL_WORDS.add(create("Hammer", "A tool for hitting nails.", "Use a hammer to fix the fence."));
+        ALL_WORDS.add(create("Instrument", "Used for making music.", "Which instrument do you play?"));
+        ALL_WORDS.add(create("Jacket", "A short coat for warmth.", "Put on your jacket, it is cold."));
+        ALL_WORDS.add(create("Key", "Used for opening locks.", "I lost my house key!"));
+        ALL_WORDS.add(create("Laptop", "A small computer you can carry.", "I do my homework on a laptop."));
+        ALL_WORDS.add(create("Magnet", "Something that pulls metal things.", "The magnet stuck to the fridge."));
+        ALL_WORDS.add(create("Needle", "A thin tool for sewing.", "Grandma used a needle and thread."));
+        ALL_WORDS.add(create("Oven", "Used for baking and cooking.", "The cookies are in the oven."));
+        ALL_WORDS.add(create("Piano", "A large musical instrument with keys.", "Play a song on the piano."));
+        ALL_WORDS.add(create("Quilt", "A warm and colorful blanket.", "The quilt keep us warm at night."));
+        ALL_WORDS.add(create("Rocket", "Used for traveling into space.", "The rocket flew to the moon."));
+        ALL_WORDS.add(create("Shatter", "To break into many pieces.", "The glass will shatter if it falls."));
+        ALL_WORDS.add(create("Telescope", "Used for looking at distant stars.", "Look at Saturn through the telescope."));
+        ALL_WORDS.add(create("Umbrella", "Used to stay dry in the rain.", "My umbrella is bright yellow."));
+        ALL_WORDS.add(create("Vehicle", "Something used for transport.", "A bus is a large vehicle."));
+        ALL_WORDS.add(create("Wagon", "A cart with four wheels.", "Pull the red wagon to the park."));
+        ALL_WORDS.add(create("Yo-yo", "A toy that goes up and down.", "The yo-yo is fun to play with."));
+        ALL_WORDS.add(create("Zipper", "Used for closing clothes.", "Zip up your coat zipper."));
+        
+        // Actions & Verbs (Extended)
+        ALL_WORDS.add(create("Absorb", "To soak up liquid.", "Sponges absorb water easily."));
+        ALL_WORDS.add(create("Balance", "To stay upright and steady.", "Can you balance on one foot?"));
+        ALL_WORDS.add(create("Collect", "To gather things together.", "I collect shiny seashells."));
+        ALL_WORDS.add(create("Discover", "To find something new.", "We might discover a secret cave."));
+        ALL_WORDS.add(create("Explore", "To travel to new places.", "Let's explore the backyard."));
+        ALL_WORDS.add(create("Freeze", "To turn into ice from cold.", "Water will freeze in winter."));
+        ALL_WORDS.add(create("Gather", "To come together in a group.", "Birds gather on the telephone wire."));
+        ALL_WORDS.add(create("Hurry", "To move or act quickly.", "Hurry up, we are running late!"));
+        ALL_WORDS.add(create("Imagine", "To think of something new.", "Imagine you have super powers!"));
+        ALL_WORDS.add(create("Journey", "A long trip to somewhere.", "The journey was very exciting."));
+        ALL_WORDS.add(create("Kneel", "To go down on your knees.", "Kneel down to see the flowers."));
+        ALL_WORDS.add(create("Listen", "To pay attention to sound.", "Listen to the birds singing."));
+        ALL_WORDS.add(create("Observe", "To watch something carefully.", "Scientists observe the stars."));
+        ALL_WORDS.add(create("Prepare", "To get ready for something.", "Prepare for your school test."));
+        ALL_WORDS.add(create("Quiver", "To shake slightly.", "The dog quiver when it is cold."));
+        ALL_WORDS.add(create("Remember", "To keep in your mind.", "Remember to wash your hands."));
+        ALL_WORDS.add(create("Search", "To look for something.", "Help me search for my keys."));
+        ALL_WORDS.add(create("Travel", "To go from one place to another.", "I want to travel the world."));
+        ALL_WORDS.add(create("Understand", "To know what something means.", "I understand the lesson now."));
+        ALL_WORDS.add(create("Vanish", "To disappear suddenly.", "The magic trick made it vanish."));
+        ALL_WORDS.add(create("Whistle", "To make a high musical sound.", "Can you whistle a happy song?"));
+        ALL_WORDS.add(create("X-ray", "A special photo of inside your body.", "The doctor took an X-ray."));
+        ALL_WORDS.add(create("Yawn", "To open your mouth when tired.", "A big yawn means it's bedtime."));
+        ALL_WORDS.add(create("Zoom", "To move very quickly.", "The race cars zoom around the track."));
+
+        // Colors & Descriptors (Extended)
+        ALL_WORDS.add(create("Amber", "A honey-yellow color.", "The amber lights are glowing."));
+        ALL_WORDS.add(create("Bright", "Full of light or smart.", "The sun is very bright."));
+        ALL_WORDS.add(create("Crimson", "A deep red color.", "The crimson roses are beautiful."));
+        ALL_WORDS.add(create("Dazzle", "To amaze with bright light.", "The fireworks dazzle the sky."));
+        ALL_WORDS.add(create("Elegant", "Graceful and stylish.", "She looks elegant in her dress."));
+        ALL_WORDS.add(create("Fragile", "Easily broken or damaged.", "The glass vase is very fragile."));
+        ALL_WORDS.add(create("Gloomy", "Dark or poorly lit.", "The rainy day was very gloomy."));
+        ALL_WORDS.add(create("Highest", "The most high position.", "The bird sat on the highest branch."));
+        ALL_WORDS.add(create("Indigo", "A dark blue-purple color.", "The sky turned indigo at dusk."));
+        ALL_WORDS.add(create("Joyful", "Feeling very happy.", "The kids made a joyful noise."));
+        ALL_WORDS.add(create("Khaki", "A dull brownish-yellow color.", "He is wearing khaki pants."));
+        ALL_WORDS.add(create("Luminous", "Shining or glowing.", "The stars are luminous tonight."));
+        ALL_WORDS.add(create("Magenta", "A bright pink-purple color.", "Her favorite color is magenta."));
+        ALL_WORDS.add(create("Narrow", "Not wide or broad.", "The narrow path led to the cabin."));
+        ALL_WORDS.add(create("Opaque", "Not able to be seen through.", "The thick wall is opaque."));
+        ALL_WORDS.add(create("Peculiar", "Strange or unusual.", "That is a very peculiar hat!"));
+        ALL_WORDS.add(create("Quickly", "In a fast way.", "Run quickly to the finish line."));
+        ALL_WORDS.add(create("Radiant", "Sending out light or joy.", "She has a radiant smile."));
+        ALL_WORDS.add(create("Shallow", "Not deep.", "The water in the pool is shallow."));
+        ALL_WORDS.add(create("Transparent", "Able to be seen through clearly.", "Water and glass are transparent."));
+        ALL_WORDS.add(create("Vibrant", "Full of energy and life.", "The carnival was very vibrant."));
+        ALL_WORDS.add(create("Wonderful", "Very good or amazing.", "We had a wonderful vacation."));
+        
+        // Add 300+ more curated batches
+        addBatch("Acorn", "Amber", "Brave", "Bloom", "Calm", "Cedar", "Dawn", "Drift", "Echo", "Fern");
+        addBatch("Gaze", "Glow", "Hazel", "Ivory", "Jade", "Kind", "Lake", "Mist", "Neon", "Olive");
+        addBatch("Pearl", "Quartz", "Reef", "Sand", "Tide", "Urban", "Vast", "Wild", "Yarn", "Zen");
+        addBatch("Apricot", "Bamboo", "Canvas", "Dune", "Easel", "Flute", "Glitter", "Harp", "Ink", "Jute");
+        addBatch("Kite", "Linen", "Marble", "Nickel", "Opal", "Petal", "Quill", "Rust", "Satin", "Twig");
+        addBatch("Velvet", "Wisp", "Xylophone", "Yogurt", "Zest", "Axe", "Bin", "Cup", "Dot", "Egg");
+        addBatch("Fan", "Gum", "Hat", "Ink", "Jug", "Kit", "Log", "Map", "Net", "Oil");
+        addBatch("Pot", "Quip", "Rat", "Sun", "Tap", "Urn", "Van", "Web", "Yak", "Zip");
+        addBatch("Ability", "Believe", "Careful", "Dream", "Escape", "Friend", "Gentle", "Heart", "Invite", "Joke");
+        addBatch("Knowledge", "Listen", "Memory", "Nature", "Option", "Peace", "Quiet", "Reward", "Success", "Trust");
+        addBatch("Unique", "Value", "Winner", "Young", "Zone", "Advice", "Bridge", "Cinema", "Detail", "Expert");
+        addBatch("Focus", "Guide", "Helpful", "Island", "Justice", "Karma", "Logic", "Mentor", "Notice", "Object");
+        addBatch("Pattern", "Quality", "Respect", "Symbol", "Theory", "Update", "Vision", "Weight", "Xenial", "Yield");
+        addBatch("Zeal", "Arctic", "Breeze", "Cactus", "Dew", "Ember", "Flint", "Geode", "Haze", "Iris");
+        addBatch("Juniper", "Kelup", "Lunar", "Moss", "Nova", "Oasis", "Peak", "Quarry", "Ridge", "Solar");
+        addBatch("Terra", "Vapor", "Willow", "Xanthic", "Yarrow", "Zenith", "Bane", "Cave", "Dale", "Edge");
+        addBatch("Fang", "Gorge", "Hook", "Inn", "Jive", "Kale", "Lair", "Mire", "Nook", "Omen");
+        addBatch("Pave", "Quaff", "Rift", "Sulk", "Tarn", "Used", "Veil", "Watt", "Yore", "Zed");
+        addBatch("Aura", "Bliss", "Chime", "Dusk", "Elite", "Fancy", "Grand", "Happy", "Ideal", "Jolly");
+        addBatch("Keen", "Lucky", "Merry", "Noble", "Opulent", "Proud", "Quirky", "Rare", "Sleek", "Trendy");
+        addBatch("Upbeat", "Vivid", "Witty", "Xeric", "Younger", "Zesty", "Baker", "Chef", "Doctor", "Farmer");
+        addBatch("Guard", "Host", "Inuit", "Judge", "Knight", "Mayor", "Nurse", "Owner", "Pilot", "Queen");
+        addBatch("Racer", "Silly", "Tutor", "Uncle", "Voter", "Writer", "X-man", "Yogi", "Zero", "Anchor");
+        addBatch("Barrel", "Castle", "Dagger", "Ensign", "Fender", "Gasket", "Handle", "Ingot", "Joker", "Kasper");
+        addBatch("Locket", "Mirror", "Nozzle", "Offset", "Piston", "Quiver", "Rudder", "Saddle", "Tiller", "U-bolt");
+        addBatch("Valve", "Widget", "Xylos", "Yoke", "Zet", "Able", "Back", "Call", "Dash", "Each");
+        addBatch("Fair", "Good", "Hold", "Idea", "Join", "Keep", "Look", "Made", "Next", "Open");
+        addBatch("Part", "Quiz", "Read", "Said", "Tell", "Unit", "View", "Walk", "Year", "Zero");
+        addBatch("Active", "Better", "Common", "Direct", "Entire", "Famous", "Global", "Hidden", "Inner", "Junior");
+        addBatch("Kindly", "Leader", "Mainly", "Normal", "Online", "Public", "Recent", "Single", "Target", "Useful");
+        addBatch("Visual", "Weekly", "X-teen", "Yearly", "Ziggy", "Alarm", "Bench", "Clock", "Desk", "Entry");
+        addBatch("Floor", "Glass", "House", "Image", "Joint", "Keyed", "Level", "Motor", "Night", "Order");
+        addBatch("Point", "Query", "Radio", "Space", "Table", "Upper", "Video", "Wheel", "X-ray", "Young");
+        addBatch("Batch", "Check", "Draft", "Event", "Field", "Grade", "History", "Index", "Joint", "Knock");
+        addBatch("Label", "Match", "Notes", "Offer", "Phase", "Quota", "Range", "Score", "Total", "Usage");
+        addBatch("Value", "Write", "Xenon", "Yield", "Zebra", "Apple", "Bread", "Candy", "Donut", "Elder");
+        addBatch("Fruit", "Grape", "Honey", "Icing", "Jelly", "Kebab", "Lemon", "Melon", "Nacho", "Olive");
+        addBatch("Peach", "Quart", "Radish", "Sugar", "Toast", "Udon", "Veggie", "Water", "Xenia", "Yeast");
+        addBatch("Ziti", "Above", "Below", "Clear", "Daily", "Extra", "Final", "Gently", "Heavy", "Ideal");
+        addBatch("Just", "Keeps", "Layer", "Moral", "Newly", "Outer", "Prior", "Quick", "Ready", "Small");
+        addBatch("Today", "Under", "Vocal", "Whole", "X-out", "Yours", "Zones", "Beach", "Cabin", "Docks");
+        addBatch("Estate", "Front", "Grass", "Hotel", "Inns", "Jetti", "Known", "Lobby", "Model", "Neary");
+        addBatch("Owned", "Parks", "Queue", "Roads", "Shops", "Tents", "Units", "Views", "Walls", "Xxxxx");
+        addBatch("Yards", "Zones", "Adult", "Birth", "Child", "Death", "Entry", "First", "Greet", "Hello");
+        addBatch("Intro", "Joint", "Known", "Life", "Music", "Never", "Often", "Photo", "Quiet", "Rest");
+        addBatch("Songs", "Time", "Usage", "Voice", "Words", "Xylos", "Years", "Zones", "Alert", "Begin");
+        addBatch("Click", "Done", "Error", "Files", "Graph", "Help", "Items", "Jobs", "Keys", "Lists");
+        addBatch("Media", "Names", "Okay", "Print", "Query", "Reset", "Save", "Tools", "Users", "Views");
+        addBatch("Width", "Xxxx", "Yield", "Zoom", "About", "Basic", "Clean", "Draft", "Early", "First");
+        addBatch("Great", "Happy", "Index", "Large", "Media", "Night", "Often", "Point", "Quick", "Rigid");
+        addBatch("Stone", "Table", "Until", "Valid", "Water", "Xxxx", "Young", "Zones", "Added", "Beats");
+        addBatch("Cards", "Dates", "Ended", "Finds", "Goals", "Holds", "Items", "Jumps", "Keeps", "Looks");
+        addBatch("Moves", "Needs", "Opens", "Pairs", "Quits", "Rides", "Steps", "Tells", "Units", "Votes");
+        addBatch("Works", "X-ing", "Yells", "Zings" );
     }
 
     private static WordDTO create(String word, String meaning, String example) {
@@ -200,7 +367,7 @@ public class FallbackWordLibrary {
 
     private static void addBatch(String... words) {
         for (String w : words) {
-            ALL_WORDS.add(create(w, "Definition for " + w, "Sentence using " + w));
+            ALL_WORDS.add(create(w, "Definition of " + w + " for children.", "Sentence using " + w + "."));
         }
     }
 }
