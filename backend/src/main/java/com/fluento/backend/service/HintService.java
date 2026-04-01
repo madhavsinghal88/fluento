@@ -15,7 +15,7 @@ import java.util.Map;
 @Slf4j
 public class HintService {
 
-    @Value("${openai.api.key}")
+    @Value("${openai.api.key:}")
     private String apiKey;
 
     @Value("${openai.api.model:openai/gpt-4o}")
@@ -47,6 +47,8 @@ public class HintService {
             String responseBody = restClient.post()
                     .uri("/chat/completions")
                     .header("Authorization", "Bearer " + apiKey)
+                    .header("HTTP-Referer", "http://localhost:8080")
+                    .header("X-Title", "Fluento Learning App (Hints)")
                     .body(request)
                     .retrieve()
                     .body(String.class);

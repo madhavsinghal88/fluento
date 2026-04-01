@@ -17,17 +17,31 @@ export default function PracticePage() {
   const [error, setError] = useState<string | null>(null);
   const [hint, setHint] = useState<string | null>(null);
   const [hintLoading, setHintLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [selectedWord, setSelectedWord] = useState<string | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     loadWords();
   }, []);
+
+  const handleWordSelect = (word: string) => {
+    setSelectedWord(word);
+    setSentence(`I am ${word.toLowerCase()} `);
+    // Move focus to textarea
+    const textarea = document.querySelector('textarea');
+    if (textarea) {
+        textarea.focus();
+        textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   const loadWords = async () => {
     setWordsLoading(true);
     setError(null);
     try {
       const words = await fetchWordsByLevel(1);
-      setDailyWords(words.slice(0, 4)); 
+      setDailyWords(words); 
     } catch (err: any) {
       setError("Unable to load the game board.");
     } finally {
@@ -90,14 +104,19 @@ export default function PracticePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             {wordsLoading ? (
-               Array(4).fill(0).map((_, i) => (
+               Array(5).fill(0).map((_, i) => (
                   <div key={i} className="h-60 bg-slate-100 animate-pulse rounded-[40px]"></div>
                ))
             ) : (
                 dailyWords.map((word, index) => (
-                    <WordCard key={index} word={word} />
+                    <WordCard 
+                        key={index} 
+                        word={word} 
+                        onSelect={handleWordSelect}
+                        isSelected={selectedWord === word.word}
+                    />
                 ))
             )}
           </div>
@@ -153,13 +172,13 @@ export default function PracticePage() {
                                 placeholder="Type your magic sentence here..."
                                 className="w-full min-h-[220px] p-10 text-3xl text-slate-900 bg-white border-8 border-slate-50 rounded-[64px] shadow-2xl focus:outline-none focus:ring-[16px] focus:ring-indigo-100 transition-all placeholder:text-slate-200 resize-none font-black leading-tight"
                             />
-                            
-                            <div className="absolute -bottom-8 right-10 flex items-center space-x-8">
+                                                       {mounted && (
+                              <div className="absolute -bottom-8 right-10 flex items-center space-x-8">
                                 <button
                                     type="button"
                                     onClick={getHint}
                                     disabled={hintLoading || dailyWords.length === 0}
-                                    className="p-5 bg-yellow-400 text-black rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all outline-none"
+                                    className="p-5 bg-yellow-400 text-black rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all outline-none disabled:opacity-50 disabled:scale-100"
                                     title="Get a Hint!"
                                 >
                                     {hintLoading ? <Loader2 className="animate-spin" /> : <Lightbulb size={32} fill="currentColor" />}
@@ -187,7 +206,8 @@ export default function PracticePage() {
                                     </>
                                     )}
                                 </button>
-                            </div>
+                              </div>
+                             )}
                         </div>
                     </form>
                 </div>

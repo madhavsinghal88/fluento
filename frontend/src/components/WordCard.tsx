@@ -5,11 +5,18 @@ import { WordDTO } from "@/services/api";
 
 interface WordCardProps {
   word: WordDTO;
+  onSelect?: (word: string) => void;
+  isSelected?: boolean;
 }
 
-export default function WordCard({ word }: WordCardProps) {
+export default function WordCard({ word, onSelect, isSelected }: WordCardProps) {
   return (
-    <div className="p-8 bg-white border-4 border-slate-50 rounded-[40px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all text-center relative overflow-hidden group">
+    <button 
+      onClick={() => onSelect?.(word.word)}
+      className={`p-8 bg-white border-4 rounded-[40px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all text-center relative overflow-hidden group w-full text-left ${
+        isSelected ? 'border-indigo-600 ring-8 ring-indigo-50 shadow-indigo-100' : 'border-slate-50'
+      }`}
+    >
       {/* Decorative star for kids */}
       <div className="absolute -top-4 -left-4 p-4 bg-[#FFCC00] rounded-full text-white rotate-[-15deg] shadow-lg group-hover:rotate-[15deg] transition-transform">
         <Star size={24} fill="currentColor" />
@@ -40,6 +47,6 @@ export default function WordCard({ word }: WordCardProps) {
       <div className="mt-6 h-3 w-full bg-slate-100 rounded-full overflow-hidden">
         <div className="h-full w-[80%] bg-[#FFCC00] rounded-full"></div>
       </div>
-    </div>
+    </button>
   );
 }

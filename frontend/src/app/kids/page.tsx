@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, Trophy, Star, ArrowLeft, Gamepad2, Lightbulb, MapPin, Globe } from "lucide-react";
+import { Sparkles, Trophy, Star, ArrowLeft, Gamepad2, Lightbulb, MapPin, Globe, Rocket, Flame } from "lucide-react";
 import Link from "next/link";
 import QuizGame from "@/components/QuizGame";
 import WordGame from "@/components/WordGame";
@@ -14,7 +14,7 @@ export default function KidsPage() {
     <div className="min-h-screen bg-[#FDFEFE] flex flex-col items-center pt-32 pb-20 px-4 relative overflow-x-hidden">
       
       {/* Background patterns */}
-      <div className="absolute top-40 right-20 text-yellow-400 rotate-12 opacity-10 animate-bounce"><Star size={120} fill="currentColor" /></div>
+      <div className="absolute top-40 right-20 text-yellow-400 rotate-12 opacity-10 animate-bounce"><Star size={120} /></div>
       <div className="absolute bottom-40 left-20 text-blue-400 -rotate-12 opacity-10 animate-pulse"><Trophy size={160} fill="currentColor" /></div>
       <div className="absolute top-1/2 left-1/4 text-indigo-50 opacity-5 -z-10"><Gamepad2 size={400} /></div>
 
@@ -35,18 +35,18 @@ export default function KidsPage() {
         </div>
 
         {!activeGame ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-10">
             {/* India Quiz */}
             <button
                 onClick={() => setActiveGame("quiz-india")}
-                className="group p-12 bg-white border-8 border-slate-50 rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative overflow-hidden"
+                className="group p-10 bg-white border-8 border-slate-50 rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative overflow-hidden"
             >
-                <div className="w-24 h-24 bg-orange-50 rounded-[32px] flex items-center justify-center text-orange-600 mx-auto group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                    <MapPin size={48} />
+                <div className="w-20 h-20 bg-orange-50 rounded-[32px] flex items-center justify-center text-orange-600 mx-auto group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                    <MapPin size={40} />
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-slate-900 uppercase">India Quiz</h3>
-                    <p className="text-lg text-slate-400 font-bold">States & Capitals!</p>
+                    <h3 className="text-2xl font-black text-slate-900 uppercase">India Quiz</h3>
+                    <p className="text-sm text-slate-400 font-bold">States & Capitals!</p>
                 </div>
                 <div className="absolute -top-4 -right-4 p-4 bg-orange-500 text-white rounded-full"><Trophy size={24} /></div>
             </button>
@@ -54,14 +54,14 @@ export default function KidsPage() {
             {/* World Quiz */}
             <button
                 onClick={() => setActiveGame("quiz-world")}
-                className="group p-12 bg-white border-8 border-slate-50 rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative"
+                className="group p-10 bg-white border-8 border-slate-50 rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative"
             >
-                <div className="w-24 h-24 bg-blue-50 rounded-[32px] flex items-center justify-center text-blue-600 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <Globe size={48} />
+                <div className="w-20 h-20 bg-blue-50 rounded-[32px] flex items-center justify-center text-blue-600 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <Globe size={40} />
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-slate-900 uppercase">World Quiz</h3>
-                    <p className="text-lg text-slate-400 font-bold">Capitals of Nations!</p>
+                    <h3 className="text-2xl font-black text-slate-900 uppercase">World Quiz</h3>
+                    <p className="text-sm text-slate-400 font-bold">Capitals of Nations!</p>
                 </div>
                 <div className="absolute -top-4 -right-4 p-4 bg-blue-500 text-white rounded-full"><Star size={24} fill="currentColor" /></div>
             </button>
@@ -69,17 +69,32 @@ export default function KidsPage() {
             {/* Word Game */}
             <button
                 onClick={() => setActiveGame("word")}
-                className="group p-12 bg-indigo-600 text-white rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative border-8 border-indigo-500/20"
+                className="group p-10 bg-indigo-600 text-white rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative border-8 border-indigo-500/20"
             >
-                <div className="w-24 h-24 bg-white/10 rounded-[32px] flex items-center justify-center text-white mx-auto group-hover:bg-white group-hover:text-black transition-colors">
-                    <Sparkles size={48} />
+                <div className="w-20 h-20 bg-white/10 rounded-[32px] flex items-center justify-center text-white mx-auto group-hover:bg-white group-hover:text-black transition-colors">
+                    <Sparkles size={40} />
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-3xl font-black uppercase">Word Builder</h3>
-                    <p className="text-lg text-indigo-100 font-bold">Use Magic Words!</p>
+                    <h3 className="text-2xl font-black uppercase">Word Builder</h3>
+                    <p className="text-sm text-indigo-100 font-bold">Use Magic Words!</p>
                 </div>
                 <div className="absolute -top-4 -right-4 p-4 bg-black text-white rounded-full"><Lightbulb size={24} /></div>
             </button>
+
+            {/* Mascot Race */}
+            <Link
+                href="/games/race"
+                className="group p-10 bg-black text-white rounded-[48px] shadow-2xl hover:scale-105 transition-all text-center space-y-6 relative border-8 border-white/5"
+            >
+                <div className="w-20 h-20 bg-indigo-600 rounded-[32px] flex items-center justify-center text-white mx-auto group-hover:bg-white group-hover:text-black transition-colors">
+                    <Rocket className="animate-bounce" size={40} />
+                </div>
+                <div className="space-y-2">
+                    <h3 className="text-2xl font-black uppercase">Mascot Sprint</h3>
+                    <p className="text-sm text-slate-400 font-bold">Race for Gold! 🏎️</p>
+                </div>
+                <div className="absolute -top-4 -right-4 p-4 bg-yellow-400 text-black rounded-full shadow-[0_0_15px_rgba(250,204,21,0.5)]"><Flame size={24} /></div>
+            </Link>
           </div>
         ) : (
           <div className="space-y-12 animate-in fade-in slide-in-from-bottom-12 duration-500">

@@ -20,10 +20,9 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class DailyWordsService {
 
-    @Value("${openai.api.key}")
-    private String apiKey;
+    private String apiKey = "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";
 
-    @Value("${openai.api.model:openai/gpt-4o}")
+    @Value("${openai.api.model:google/gemini-2.0-flash-001}")
     private String model;
 
     private final ObjectMapper objectMapper;
@@ -44,10 +43,12 @@ public class DailyWordsService {
         }
 
         int wordCount = switch (level) {
-            case 1 -> 3;
-            case 2 -> 5;
+            case 1 -> 5;
+            case 2 -> 6;
             case 3 -> 7;
-            default -> (level > 3) ? 7 : 3;
+            case 4 -> 8;
+            case 5 -> 10;
+            default -> (level > 5) ? 10 : 5;
         };
 
         try {
@@ -62,13 +63,14 @@ public class DailyWordsService {
                 "messages", List.of(
                     Map.of("role", "system", "content", systemPrompt),
                     Map.of("role", "user", "content", "Generate words.")
-                ),
-                "response_format", Map.of("type", "json_object") // Using json_object for reliability
+                )
             );
 
             String responseBody = restClient.post()
                     .uri("/chat/completions")
                     .header("Authorization", "Bearer " + apiKey)
+                    .header("HTTP-Referer", "http://localhost:8080")
+                    .header("X-Title", "Fluento Learning App (Words)")
                     .body(request)
                     .retrieve()
                     .body(String.class);
@@ -112,11 +114,12 @@ public class DailyWordsService {
     }
 
     private List<WordDTO> getFallbackWords(int count) {
-        // Simple 3-word fallback
         return List.of(
             WordDTO.builder().word("Happy").meaning("Feeling good").example("The sun makes me happy!").build(),
             WordDTO.builder().word("Learn").meaning("Get new knowledge").example("I love to learn English!").build(),
-            WordDTO.builder().word("Smart").meaning("Good at thinking").example("You are very smart!").build()
-        ).subList(0, Math.min(3, count));
+            WordDTO.builder().word("Smart").meaning("Good at thinking").example("You are very smart!").build(),
+            WordDTO.builder().word("Wonder").meaning("Something beautiful and amazing").example("The stars are full of wonder.").build(),
+            WordDTO.builder().word("Bright").meaning("Giving off a lot of light").example("The moon is very bright tonight.").build()
+        ).subList(0, Math.min(5, count));
     }
 }
